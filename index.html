@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วังจันทรเกษม - Wang Chan Kasem Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Sarabun', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; scroll-behavior: smooth; }
+        body { background: radial-gradient(circle at top, #1c1c1c, #000000 70%); color: #f0f0f0; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+        nav { background: rgba(0, 0, 0, 0.85) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 211, 105, 0.2); }
+        nav a, nav button { color: #ffd369 !important; }
+        nav a:hover { color: #fff !important; text-shadow: 0 0 10px #ffd369; }
+        #mobile-menu { background: rgba(17, 17, 17, 0.95); border-top: 1px solid #ffd369; }
+        .hero-custom { height: 100vh; background: url("https://image2url.com/r2/default/images/1772697332421-ca4e957e-ea77-495f-9209-182dddf26f92.jpg") center/cover fixed; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; }
+        .hero-custom::after { content: ""; position: absolute; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); top: 0; left: 0; z-index: 1; }
+        .hero-custom .z-10 { z-index: 2; }
+        .hero-custom h1 { color: #ffd369; letter-spacing: 3px; text-shadow: 0 0 10px #ffd369, 0 0 20px #cfa73a, 0 0 40px #cfa73a; animation: glow 3s infinite alternate; }
+        @keyframes glow { from { text-shadow: 0 0 10px #ffd369; } to { text-shadow: 0 0 20px #ffd369, 0 0 40px #cfa73a, 0 0 60px #cfa73a; } }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 48px; color: #ffd369; font-family: 'Playfair Display', serif; text-shadow: 0 0 10px rgba(255, 211, 105, 0.3); } 
+        .section-title p { color: #aaa; font-size: 1.1rem; }
+        .gold-line { width: 80px; height: 3px; background: #ffd369; margin: 15px auto; box-shadow: 0 0 10px #ffd369; }
+        .card-custom { background: rgba(255, 255, 255, 0.05); border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; transition: 0.4s; position: relative; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); height: 100%; }
+        .card-custom::before { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 3px; background: linear-gradient(90deg, transparent, #ffd369, transparent); transition: 0.5s; z-index: 10; }
+        .card-custom:hover::before { left: 100%; }
+        .card-custom:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 0 20px rgba(255, 215, 120, 0.5), 0 0 40px rgba(255, 215, 120, 0.3); border-color: rgba(255, 211, 105, 0.5); }
+        .card-custom img { width: 100%; height: 250px; object-fit: cover; transition: 0.6s; }
+        .card-custom:hover img { transform: scale(1.15); }
+        .card-content { padding: 25px; position: relative; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 100%); }
+        .card-content h3, .card-content h4 { color: #ffd369; margin-bottom: 10px; font-size: 1.75rem; } 
+        .card-content p { font-size: 16px; color: #ccc; line-height: 1.6; } 
+        .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; padding: 12px 28px; border-radius: 30px; background: linear-gradient(45deg, #cfa73a, #ffd369); color: #000 !important; font-weight: bold; text-decoration: none; transition: 0.3s; box-shadow: 0 0 10px rgba(255, 215, 120, 0.5); border: none; cursor: pointer; }
+        .btn-gold:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 215, 120, 0.8), 0 0 40px rgba(255, 215, 120, 0.5); color: #000 !important; }
+        .btn-outline-gold { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; padding: 12px 28px; border-radius: 30px; background: transparent; border: 2px solid #ffd369; color: #ffd369 !important; font-weight: bold; text-decoration: none; transition: 0.3s; cursor: pointer; }
+        .btn-outline-gold:hover { background: #ffd369; color: #000 !important; box-shadow: 0 0 20px rgba(255, 215, 120, 0.5); transform: scale(1.05); }
+        .avatar-glow { width: 192px; height: 192px; margin: 0 auto 20px; border-radius: 50%; border: 4px solid #ffd369; box-shadow: 0 0 20px rgba(255, 211, 105, 0.4); overflow: hidden; transition: 0.5s; }
+        .group:hover .avatar-glow { box-shadow: 0 0 40px rgba(255, 211, 105, 0.8); transform: scale(1.05); }
+        .avatar-glow img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: 0.5s; } 
+        .group:hover .avatar-glow img { transform: scale(1.1); }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #ffd369; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #cfa73a; }
+        footer { background: #0a0a0a; border-top: 1px solid rgba(255, 211, 105, 0.2); box-shadow: 0 -5px 20px rgba(0,0,0,0.5); }
+        
+        /* สไตล์ปุ่ม Back to Top */
+        #backToTop { opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out; }
+        #backToTop.show { opacity: 1; visibility: visible; }
+
+        /* สไตล์ป๊อปอัพรูปเต็ม (Modal/Lightbox) */
+        #imageModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        #imageModal.show {
+            display: flex;
+        }
+
+        #modalImage {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        #closeModal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: #ffd369;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold flex items-center gap-2" style="font-family: 'Playfair Display', serif;">
+                <i class="fa-solid fa-vihara"></i> วังจันทรเกษม
+            </a>
+            <div class="hidden md:flex space-x-8 text-base font-medium items-center uppercase tracking-wider">
+                <a href="#home">หน้าหลัก</a>
+                <a href="#figures">บุคคลสำคัญ</a>
+                <a href="#history">ประวัติ</a>
+                <a href="#highlights">สถาปัตยกรรม</a>
+                <a href="#nearby">ใกล้เคียง</a>
+                <a href="#visit" class="btn-gold !mt-0 !py-2 !px-6 text-base">เข้าชม</a>
+            </div>
+            <button id="mobile-btn" class="md:hidden text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full left-0 shadow-lg">
+            <div class="flex flex-col px-6 py-6 space-y-4 text-center text-lg">
+                <a href="#home" class="mobile-link pb-2">หน้าหลัก</a>
+                <a href="#figures" class="mobile-link pb-2">บุคคลสำคัญ</a>
+                <a href="#history" class="mobile-link pb-2">ประวัติ</a>
+                <a href="#highlights" class="mobile-link pb-2">สถาปัตยกรรม</a>
+                <a href="#nearby" class="mobile-link pb-2">ใกล้เคียง</a>
+                <a href="#visit" class="mobile-link text-black bg-[#ffd369] py-2 rounded-full font-bold w-1/2 mx-auto mt-2">ข้อมูลการเข้าชม</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <header id="home" class="hero-custom">
+            <div class="relative z-10 w-full px-6" data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-xl md:text-2xl text-[#ffd369] mb-4 tracking-[0.3em] uppercase">The Front Palace of Ayutthaya</p>
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 font-serif leading-tight">
+                    วังจันทรเกษม<br>
+                    <span class="text-4xl md:text-6xl font-light opacity-90 italic">Digital Heritage</span>
+                </h1>
+                <div class="mt-10 flex justify-center items-center">
+                    <a href="#history" class="btn-gold text-xl px-10 py-4 w-full md:w-auto">เริ่มต้นสำรวจ <i class="fa-solid fa-arrow-down animate-bounce ml-2"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <section id="figures" class="py-24">
+            <div class="container mx-auto w-[90%]">
+                <div class="section-title" data-aos="fade-up">
+                    <p class="uppercase tracking-widest text-[#ffd369] text-base font-bold mb-2">Historical Figures</p>
+                    <h2>บุคคลสำคัญแห่งวังหน้า</h2>
+                    <div class="gold-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="avatar-glow">
+                            <img src="https://image2url.com/r2/default/images/1772719117573-43c2d485-8690-446b-922b-c9d64ae9ea90.jpg" alt="สมเด็จพระนเรศวรมหาราช" onerror="this.src='https://placehold.co/400x400/1c1c1c/ffd369?text=King+Naresuan';">
+                        </div>
+                        <h4 class="text-3xl font-bold text-[#ffd369] mb-2">สมเด็จพระนเรศวรมหาราช</h4>
+                        <p class="text-white mb-3 text-base">ผู้โปรดเกล้าฯ ให้สร้างวัง</p>
+                        <p class="text-gray-400 text-base leading-relaxed">ทรงสร้างวังจันทรเกษมขึ้นราวปี พ.ศ. 2120 เพื่อใช้เป็นที่ประทับเมื่อครั้งยังทรงเป็นพระมหาอุปราช และใช้เป็นกองบัญชาการรับศึกทัพพม่า</p>
+                    </div>
+                    <div class="group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="avatar-glow">
+                            <img src="https://image2url.com/r2/default/images/1772719018284-ce00a491-09b8-4781-a372-d9fc3f4a7406.jpg" alt="รัชกาลที่ 4" onerror="this.src='https://placehold.co/400x400/1c1c1c/ffd369?text=King+Rama+IV';">
+                        </div>
+                        <h4 class="text-3xl font-bold text-[#ffd369] mb-2">พระบาทสมเด็จพระจอมเกล้าเจ้าอยู่หัว</h4>
+                        <p class="text-white mb-3 text-base">ผู้บูรณะปฏิสังขรณ์ (รัชกาลที่ ๔)</p>
+                        <p class="text-gray-400 text-base leading-relaxed">ทรงโปรดเกล้าฯ ให้บูรณะวังที่ถูกทิ้งร้าง เพื่อใช้เป็นที่ประทับแปรพระราชฐาน และสร้างพระที่นั่งสถาปัตยกรรมตะวันตกเพิ่มเติม</p>
+                    </div>
+                    <div class="group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="avatar-glow">
+                            <img src="https://image2url.com/r2/default/images/1772719153501-10c2ade6-4d11-40ea-949e-9768142ed022.jfif" alt="กรมพระยาดำรงราชานุภาพ" onerror="this.src='https://placehold.co/400x400/1c1c1c/ffd369?text=Prince+Damrong';">
+                        </div>
+                        <h4 class="text-3xl font-bold text-[#ffd369] mb-2">กรมพระยาดำรงราชานุภาพ</h4>
+                        <p class="text-white mb-3 text-base">ผู้ริเริ่มจัดตั้งพิพิธภัณฑ์</p>
+                        <p class="text-gray-400 text-base leading-relaxed">"พระบิดาแห่งประวัติศาสตร์ไทย" ผู้ทรงมีพระดำริให้รวบรวมโบราณวัตถุมาจัดแสดงเป็น "โบราณพิพิธภัณฑ์" ซึ่งเป็นรากฐานในปัจจุบัน</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="py-16 bg-black/40 border-y border-white/10">
+            <div class="container mx-auto w-[90%]">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="md:w-1/2" data-aos="fade-right">
+                        <div class="card-custom !p-0">
+                            <img src="https://image2url.com/r2/default/images/1772697516182-f503dc57-54a6-446f-95e2-0708f800e794.jpg" alt="ประวัติวังจันทรเกษม" class="w-full h-full object-cover min-h-[400px]">
+                        </div>
+                    </div>
+                    <div class="md:w-1/2" data-aos="fade-left">
+                        <h2 class="text-base font-bold text-[#ffd369] tracking-widest uppercase mb-2">The History</h2>
+                        <h3 class="text-4xl md:text-6xl font-bold text-white mb-6 font-serif">รู้จัก "วังหน้า" แห่งกรุงเก่า</h3>
+                        <div class="gold-line !ml-0"></div>
+                        <p class="text-xl mb-6 text-gray-300 leading-relaxed mt-6">วังจันทรเกษม สร้างขึ้นในสมัย<strong>สมเด็จพระนเรศวรมหาราช</strong> ราวปี พ.ศ. 2120 นับเป็นสถานที่ที่มีความสำคัญทางยุทธศาสตร์และประวัติศาสตร์อย่างยิ่ง</p>
+                        <p class="text-xl mb-8 text-gray-300 leading-relaxed">หลังจากเสียกรุงศรีอยุธยา วังแห่งนี้ถูกทิ้งร้าง จนกระทั่งได้รับการบูรณะครั้งใหญ่ ปัจจุบันทำหน้าที่เป็น <strong>"พิพิธภัณฑสถานแห่งชาติ จันทรเกษม"</strong></p>
+                        <div class="flex gap-6">
+                            <div class="border border-[#ffd369]/30 p-5 rounded-xl text-center bg-black/50 backdrop-blur w-1/2">
+                                <span class="text-4xl font-bold text-[#ffd369] block mb-1">400+</span>
+                                <span class="text-base text-gray-400">ปีประวัติศาสตร์</span>
+                            </div>
+                            <div class="border border-[#ffd369]/30 p-5 rounded-xl text-center bg-black/50 backdrop-blur w-1/2">
+                                <span class="text-4xl font-bold text-[#ffd369] block mb-1">1,000+</span>
+                                <span class="text-base text-gray-400">วัตถุจัดแสดง</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="highlights" class="py-24">
+            <div class="container mx-auto w-[90%]">
+                <div class="section-title" data-aos="fade-up">
+                    <p class="uppercase tracking-widest text-[#ffd369] text-base font-bold mb-2">Architecture</p>
+                    <h2>สถาปัตยกรรมล้ำค่า</h2>
+                    <div class="gold-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card-custom" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://image2url.com/r2/default/images/1772697835623-e51758f0-9e31-4714-81df-f34a33d80467.jpg" alt="พระที่นั่งพิมานรัตยา">
+                        <div class="card-content">
+                            <h4>พระที่นั่งพิมานรัตยา</h4>
+                            <p>กลุ่มอาคารตึกกลางสระน้ำ สถาปัตยกรรมไทยผสมตะวันตกที่ลงตัว เคยใช้เป็นที่ประทับและว่าราชการในสมัยรัชกาลที่ 4</p>
+                        </div>
+                    </div>
+                    <div class="card-custom" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://image2url.com/r2/default/images/1772697748274-06b32e16-dde5-4269-b6cd-66fa209abdfc.jpg" alt="พลับพลาจตุรมุข">
+                        <div class="card-content">
+                            <h4>พลับพลาจตุรมุข</h4>
+                            <p>อาคารไม้สักทองทั้งหลัง วิจิตรบรรจงด้วยลวดลายแกะสลัก สร้างขึ้นเพื่อใช้ในงานพระราชพิธีสำคัญและการออกมหาสมาคม</p>
+                        </div>
+                    </div>
+                    <div class="card-custom" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://image2url.com/r2/default/images/1772698241734-7336623e-e00e-4e93-8e71-4a9cb21e84b3.jpg" alt="พระที่นั่งพิสัยศัลยลักษณ์">
+                        <div class="card-content">
+                            <h4>พระที่นั่งพิสัยศัลยลักษณ์</h4>
+                            <p>หรือ "หอส่องกล้อง" เป็นหอคอยสูง 4 ชั้น สร้างขึ้นเพื่อใช้ดูดาวและสังเกตการณ์ข้าศึก ถือเป็นแลนด์มาร์คสำคัญของวังแห่งนี้</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="collections" class="py-24 bg-black/40 border-y border-white/10">
+            <div class="container mx-auto w-[90%]">
+                <div class="section-title" data-aos="fade-up">
+                    <p class="uppercase tracking-widest text-[#ffd369] text-base font-bold mb-2">Exhibitions</p>
+                    <h2>รวมโบราณวัตถุ</h2>
+                    <div class="gold-line"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 justify-items-center">
+                    
+                    <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-[#ffd369]/50 shadow-[0_0_20px_rgba(255,211,105,0.3)] overflow-hidden cursor-pointer group" data-aos="flip-left" data-aos-delay="100">
+                        <img src="https://image2url.com/r2/default/images/1772721320145-e54ccd19-0a29-4e4e-ac1b-71e1283b106b.png" alt="เครื่องทองอยุธยา" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-125">
+                        <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-magnifying-glass-plus text-3xl text-[#ffd369] mb-2"></i>
+                            <span class="text-white font-bold text-lg tracking-wide">ชมรูปเต็ม</span>
+                        </div>
+                    </div>
+                    
+                    <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-[#ffd369]/50 shadow-[0_0_20px_rgba(255,211,105,0.3)] overflow-hidden cursor-pointer group" data-aos="flip-left" data-aos-delay="200">
+                        <img src="https://image2url.com/r2/default/images/1772721360860-886019a2-63d6-408a-aa30-544a92e35175.jpg" alt="เครื่องเบญจรงค์" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-125">
+                        <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-magnifying-glass-plus text-3xl text-[#ffd369] mb-2"></i>
+                            <span class="text-white font-bold text-lg tracking-wide">ชมรูปเต็ม</span>
+                        </div>
+                    </div>
+
+                    <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-[#ffd369]/50 shadow-[0_0_20px_rgba(255,211,105,0.3)] overflow-hidden cursor-pointer group" data-aos="flip-left" data-aos-delay="300">
+                        <img src="https://image2url.com/r2/default/images/1772721394886-7d134802-343c-453e-b26f-b4f96eb73756.jpg" alt="ศัสตราวุธโบราณ" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-125">
+                        <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
+                            <i class="fa-solid fa-magnifying-glass-plus text-3xl text-[#ffd369] mb-2"></i>
+                            <span class="text-white font-bold text-lg tracking-wide">ชมรูปเต็ม</span>
+                        </div>
+                    </div>
+
+                    </div>
+            </div>
+        </section>
+
+        <section id="nearby" class="py-24">
+            <div class="container mx-auto w-[90%]">
+                <div class="section-title" data-aos="fade-up">
+                    <p class="uppercase tracking-widest text-[#ffd369] text-base font-bold mb-2">Explore</p>
+                    <h2>สถานที่ใกล้เคียง</h2>
+                    <div class="gold-line"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card-custom" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://image2url.com/r2/default/images/1772699026088-85e34e1e-daa2-49bc-93d6-b1f7bb8dcdef.jpg" alt="ตลาดหัวรอ">
+                        <div class="absolute top-4 right-4 bg-black/80 border border-[#ffd369] px-4 py-1.5 rounded-full text-base font-bold text-[#ffd369] z-20 shadow-[0_0_10px_rgba(255,211,105,0.5)]">
+                            <i class="fa-solid fa-person-walking"></i> 200 ม.
+                        </div>
+                        <div class="card-content">
+                            <h4>ตลาดหัวรอ</h4>
+                            <p class="mb-4">ตลาดเก่าแก่ แหล่งรวมสตรีทฟู้ดอยุธยา ขนมไทยโบราณ และของฝาก เดินเท้าจากวังได้เลย</p>
+                            <a href="https://map.longdo.com/main/p/A00141328" target="_blank" class="text-[#ffd369] text-base hover:text-white font-bold"><i class="fa-solid fa-location-arrow"></i> นำทางไปที่นี่</a>
+                        </div>
+                    </div>
+                    <div class="card-custom" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://image2url.com/r2/default/images/1772697020330-aa2f742b-2c28-42ce-a8c0-63f6898dd9b6.jfif" alt="วัดราชบูรณะ">
+                        <div class="absolute top-4 right-4 bg-black/80 border border-[#ffd369] px-4 py-1.5 rounded-full text-base font-bold text-[#ffd369] z-20 shadow-[0_0_10px_rgba(255,211,105,0.5)]">
+                            <i class="fa-solid fa-car"></i> 1.2 กม.
+                        </div>
+                        <div class="card-content">
+                            <h4>วัดราชบูรณะ</h4>
+                            <p class="mb-4">ชมพระปรางค์ที่สมบูรณ์ที่สุดแห่งหนึ่ง และกรุสมบัติที่มีการค้นพบเครื่องทองล้ำค่า</p>
+                            <a href="https://www.bing.com/maps/directions?ty=0&v=2&sV=1&rtp=pos.14.359938621520996_100.60552978515625__13000%252C%2520Han%2520Tra%252C%2520Phra%2520Nakhon%2520Si%2520Ayutthaya%2520Province%252C%2520Thailand_%7Epos.14.35888957977295_100.56780242919922__Wat%2520Ratchaburana%252C%2520Phra%2520Nakhon%2520Si%2520Ayutthaya%2520Province%252C%2520Thailand_&mode=d&cp=14.359376%7E100.571212&lvl=15.1&style=r" target="_blank" class="text-[#ffd369] text-base hover:text-white font-bold"><i class="fa-solid fa-location-arrow"></i> นำทางไปที่นี่</a>
+                        </div>
+                    </div>
+                    <div class="card-custom" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://image2url.com/r2/default/images/1772696707220-402c1a12-f6d4-4491-84a4-b6bfd027415b.jpg" alt="วัดมหาธาตุ">
+                        <div class="absolute top-4 right-4 bg-black/80 border border-[#ffd369] px-4 py-1.5 rounded-full text-base font-bold text-[#ffd369] z-20 shadow-[0_0_10px_rgba(255,211,105,0.5)]">
+                            <i class="fa-solid fa-car"></i> 1.5 กม.
+                        </div>
+                        <div class="card-content">
+                            <h4>วัดมหาธาตุ</h4>
+                            <p class="mb-4">ศูนย์กลางทางศาสนาของอยุธยา โดดเด่นด้วยจุดถ่ายภาพ "เศียรพระพุทธรูปในรากไม้"</p>
+                            <a href="https://www.bing.com/maps/search?FORM=HDRSC6&q=%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%A1%E0%B8%AB%E0%B8%B2%E0%B8%98%E0%B8%B2%E0%B8%95%E0%B8%B8+%E0%B8%AD%E0%B8%A2%E0%B8%B8%E0%B8%98%E0%B8%A2%E0%B8%B2map&cp=14.356945%7E100.567513&lvl=16&style=r" target="_blank" class="text-[#ffd369] text-base hover:text-white font-bold"><i class="fa-solid fa-location-arrow"></i> นำทางไปที่นี่</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+ <section id="visit" class="py-24 bg-black/60 border-t border-[#ffd369]/20">
+            <div class="container mx-auto w-[90%]">
+                <div class="section-title" data-aos="fade-up">
+                    <p class="uppercase tracking-widest text-[#ffd369] text-base font-bold mb-2">Plan Your Visit</p>
+                    <h2>ข้อมูลการเข้าชม</h2>
+                    <div class="gold-line"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="space-y-6" data-aos="fade-right">
+                        <div class="card-custom !h-auto !p-8 flex items-center gap-6">
+                            <div class="text-[#ffd369] text-5xl"><i class="fa-regular fa-clock"></i></div>
+                            <div>
+                                <h4 class="text-2xl font-bold text-white mb-2">เวลาทำการ</h4>
+                                <p class="text-gray-300 text-lg">พุธ - อาทิตย์: 09.00 - 16.00 น.<br><span class="text-[#ff6b6b] text-base">*ปิดวันจันทร์-อังคาร และวันหยุดนักขัตฤกษ์</span></p>
+                            </div>
+                        </div>
+
+                        <div class="card-custom !h-auto !p-8 flex items-center gap-6">
+                            <div class="text-[#ffd369] text-5xl"><i class="fa-solid fa-ticket"></i></div>
+                            <div class="w-full">
+                                <h4 class="text-2xl font-bold text-white mb-3">อัตราค่าเข้าชม</h4>
+                                <div class="flex justify-between border-b border-white/10 pb-2 mb-2 text-lg">
+                                    <span class="text-gray-300">ชาวไทย</span><span class="text-[#ffd369] font-bold">20 บาท</span>
+                                </div>
+                                <div class="flex justify-between border-b border-white/10 pb-2 mb-2 text-lg">
+                                    <span class="text-gray-300">ชาวต่างชาติ</span><span class="text-[#ffd369] font-bold">100 บาท</span>
+                                </div>
+                                <div class="flex justify-between text-base">
+                                    <span class="text-gray-500">นักเรียน/นักศึกษา</span><span class="text-green-400">เข้าชมฟรี</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col h-full" data-aos="fade-left">
+                        <div class="card-custom !p-2 flex-grow min-h-[300px]">
+                            <div class="w-full h-full relative rounded-xl overflow-hidden min-h-[300px]">
+                                <iframe 
+                                    width="100%" 
+                                    height="100%" 
+                                    id="gmap_canvas" 
+                                    src="https://maps.google.com/maps?q=พิพิธภัณฑสถานแห่งชาติจันทรเกษม&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    marginheight="0" 
+                                    marginwidth="0" 
+                                    style="filter: invert(90%) hue-rotate(180deg) brightness(80%) contrast(120%);"
+                                    class="absolute inset-0">
+                                </iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end mt-6">
+                             <a href="https://www.google.com/maps/place/Chantharakasem+National+Museum/@14.365645,100.574728,16z/data=!4m6!3m5!1s0x30e275ad28db71d3:0x17414e93680dacf!8m2!3d14.3656451!4d100.5747278!16s%2Fg%2F122kcc7z?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDMwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-gold text-xl px-8 py-3">
+                                <i class="fa-solid fa-location-arrow"></i> นำทางด้วย Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 mt-auto text-lg">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h2 class="text-4xl font-bold font-serif mb-2 text-[#ffd369]">วังจันทรเกษม</h2>
+                    <p class="text-gray-400 text-base">พิพิธภัณฑสถานแห่งชาติ จันทรเกษม</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-[#ffd369] text-3xl transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#ffd369] text-3xl transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-[#ffd369] text-3xl transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="py-6 border-t border-[#ffd369]/20 text-center">
+                <p class="text-[#ffd369] font-bold mb-3 tracking-widest text-sm uppercase">คณะผู้จัดทำ (Developed by)</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-300 font-medium text-base">
+                    <span class="hover:text-white transition-colors cursor-default">นายนัธพงศ์ 023</span>
+                    <span class="hidden md:block text-[#ffd369]/50 text-sm"><i class="fa-solid fa-circle"></i></span>
+                    <span class="hover:text-white transition-colors cursor-default">นายปิติสกุล 028</span>
+                    <span class="hidden md:block text-[#ffd369]/50 text-sm"><i class="fa-solid fa-circle"></i></span>
+                    <span class="hover:text-white transition-colors cursor-default">นายปุณยวัจน์ 029</span>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 border-t border-white/10">
+                <p>© 2026 Wang Chan Kasem Digital Museum. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-[#ffd369]">นโยบายความเป็นส่วนตัว</a>
+                    <a href="#" class="hover:text-[#ffd369]">เงื่อนไขการใช้งาน</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-[#ffd369] text-black w-12 h-12 rounded-full shadow-[0_0_15px_rgba(255,211,105,0.6)] z-50 hover:scale-110 hover:bg-white transition-all duration-300">
+        <i class="fa-solid fa-arrow-up text-xl"></i>
+    </button>
+
+    <div id="imageModal" class="fixed inset-0 bg-black/85 z-[1000] hidden justify-center items-center transition-opacity duration-300 backdrop-blur-sm">
+        <i id="closeModal" class="fa-solid fa-times absolute top-5 right-5 text-3xl text-[#ffd369] cursor-pointer hover:scale-110"></i>
+        <img id="modalImage" src="" alt="Full Resolution" class="max-w-[90vw] max-h-[90vh] object-contain shadow-2xl rounded-lg">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // เริ่มต้นใช้งาน AOS (Animation on Scroll)
+        AOS.init({
+            duration: 800, // ความเร็วของการเล่นแอนิเมชัน (ms)
+            once: true,    // เล่นแอนิเมชันครั้งเดียวเมื่อเลื่อนไปถึง
+            offset: 100    // ระยะห่างก่อนเริ่มแอนิเมชัน
+        });
+
+        // เมนูมือถือ
+        const mobileBtn = document.getElementById('mobile-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ระบบปุ่ม Back to Top
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ระบบป๊อปอัพรูปเต็ม (Modal/Lightbox)
+        const collectibleImages = document.querySelectorAll('#collections .cursor-pointer');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+
+        collectibleImages.forEach(imageContainer => {
+            imageContainer.addEventListener('click', () => {
+                const imgSrc = imageContainer.querySelector('img').src;
+                const imgAlt = imageContainer.querySelector('img').alt;
+                modalImage.src = imgSrc;
+                modalImage.alt = imgAlt;
+                imageModal.classList.add('show');
+                imageModal.classList.remove('hidden');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            imageModal.classList.remove('show');
+            imageModal.classList.add('hidden');
+        });
+
+        // ปิด Modal เมื่อคลิกที่พื้นที่ว่างรอบรูป
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                imageModal.classList.remove('show');
+                imageModal.classList.add('hidden');
+            }
+        });
+
+        // ปิด Modal เมื่อกดปุ่ม Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
+                imageModal.classList.remove('show');
+                imageModal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
